@@ -60,4 +60,11 @@ public class Order {
                 ", totalSum=" + totalSum +
                 '}';
     }
+    static ArrayList<Order> orders = new ArrayList<>();
+    /*
+    public static void addOrder(){
+        orders.add()
+    }
+
+     */
 }

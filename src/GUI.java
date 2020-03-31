@@ -116,7 +116,7 @@ public class GUI {
     }
 
     public static void makeOrder() {
-        ArrayList<Product> products = Main.products;
+        ArrayList<Product> products = Product.products;
         ArrayList<Product> orderProducts = new ArrayList<>();
 
         JFrame f=new JFrame("Make Order");
@@ -160,7 +160,7 @@ public class GUI {
         makeOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Main.addOrder(new Order(Main.customers.get(0), Main.workers.get(0), new Date(), orderProducts));
+                Main.addOrder(new Order(Customer.customers.get(0), Worker.workers.get(0), new Date(), orderProducts));
             }
         });
         f.add(makeOrderButton);
@@ -179,15 +179,15 @@ public class GUI {
     public static void showOrders(){
         JFrame fo = new JFrame("All orders");
 
-        int n = Main.orders.size();
+        int n = Order.orders.size();
 
 
         Object[][] array = new String[n][4];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Main.orders.get(i).getCustomer().getEmail();
-            array[i][1] = Main.orders.get(i).getWorker().getName();
-            array[i][2] = Main.orders.get(i).getDate().toString();
-            array[i][3] = Double.toString(Main.orders.get(i).getTotalSum());
+            array[i][0] = Order.orders.get(i).getCustomer().getEmail();
+            array[i][1] = Order.orders.get(i).getWorker().getName();
+            array[i][2] = Order.orders.get(i).getDate().toString();
+            array[i][3] = Double.toString(Order.orders.get(i).getTotalSum());
         }
 
 
@@ -211,12 +211,12 @@ public class GUI {
     public static void showWorkers(){
         JFrame fo = new JFrame("Workers");
 
-        int n = Main.workers.size();
+        int n = Worker.workers.size();
 
 
         Object[][] array = new String[n][1];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Main.workers.get(i).toString();
+            array[i][0] = Worker.workers.get(i).toString();
         }
 
 
@@ -243,12 +243,12 @@ public class GUI {
     public static void showCustomers() {
         JFrame fc = new JFrame("Customers");
 
-        int n = Main.customers.size();
+        int n = Customer.customers.size();
 
 
         Object[][] array = new String[n][1];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Main.customers.get(i).toString();
+            array[i][0] = Customer.customers.get(i).toString();
         }
 
 
@@ -275,12 +275,12 @@ public class GUI {
     public static void showProducts() {
         JFrame fp = new JFrame("Products");
 
-        int n = Main.products.size();
+        int n = Product.products.size();
 
 
         Object[][] array = new String[n][1];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Main.products.get(i).toString();
+            array[i][0] = Product.products.get(i).toString();
         }
 
 

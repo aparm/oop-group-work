@@ -7,4 +7,5 @@ public class Product_Bakery extends Product{
     public String toString() {
         return "Pirukas{" + getName() + "; " + getPrice() + "}";
     }
+
 }

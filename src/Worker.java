@@ -62,4 +62,13 @@ public class Worker {
     public String toString() {
         return "Töötaja{" + getName() + "; " + getWorkingTime() + "}";
     }
+    static ArrayList<Worker> workers = new ArrayList<>();
+
+    public static void addWorker(){
+        workers.add(new Worker_Manager("Volodja", "123"));
+        workers.add(new Worker("Afanasij", "1234"));
+        workers.add(new Worker_Security("Dmitri", "1234"));
+        workers.add(new Worker_Coffeeman("Anatolij", "1234"));
+        workers.add(new Worker_Cleaner("Roman", "1234"));
+    }
 }

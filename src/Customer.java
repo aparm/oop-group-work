@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Customer {
@@ -106,5 +107,11 @@ public class Customer {
                 ", purchasesSum=" + purchasesSum +
                 ", discount=" + discount +
                 '}';
+    }
+    static ArrayList<Customer> customers = new ArrayList<>();
+
+    public static void addCostumer(){
+        customers.add(new Customer("no", "", "", new Date(), false));
+        customers.add(new Customer("Aleksei", "aparm@@gmail.com", "", new Date(), false));
     }
 }
