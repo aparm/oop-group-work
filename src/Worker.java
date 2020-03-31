@@ -72,7 +72,6 @@ public class Worker {
             System.out.println("Ошибка со временем работы - конец");
         }
     }
-    /*
     @Override
     public String toString() {
         return "Worker{" +
@@ -80,6 +79,4 @@ public class Worker {
                 ", workingTime=" + workingTime +
                 '}';
     }
-
-     */
 }
