@@ -167,7 +167,7 @@ public class GUI {
 
 
 
-        f.setSize(800,400);
+        f.setSize(800,600);
         f.setLayout(null);
         f.setVisible(true);
 
