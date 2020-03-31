@@ -6,20 +6,33 @@ import java.util.Date;
 public class Worker {
     private String name;
     private String password;
+    //private String hierarchy;
 
     private ArrayList<Date> workingTime; //для учета времени работы, опозданий и тд
     // 0, 2, 4... - начало работы
     // 1, 3, 5... - конец работы
 
 
-    public Worker(String name, String password) {
+    public Worker(String name, String password) { //String hierarchy
         this.name = name;
         this.password = password;
+        //this.hierarchy = hierarchy;
     }
 
     public String getName() {
         return name;
     }
+
+    /*
+    public String getHierarchy() {
+        return hierarchy;
+    }
+
+    public void setHierarchy(String hierarchy) {
+        this.hierarchy = hierarchy;
+    }
+
+     */
 
     public void setName(String name) {
         this.name = name;
@@ -59,7 +72,7 @@ public class Worker {
             System.out.println("Ошибка со временем работы - конец");
         }
     }
-
+    /*
     @Override
     public String toString() {
         return "Worker{" +
@@ -67,4 +80,6 @@ public class Worker {
                 ", workingTime=" + workingTime +
                 '}';
     }
+
+     */
 }
