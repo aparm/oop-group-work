@@ -60,6 +60,6 @@ public class Worker {
     }
     @Override
     public String toString() {
-        return "Worker{" + getName() + "; " + getWorkingTime() + "}";
+        return "Töötaja{" + getName() + "; " + getWorkingTime() + "}";
     }
 }
