@@ -6,36 +6,33 @@ import java.util.Date;
 public class Worker {
     private String name;
     private String password;
-    //private String hierarchy;
+    private String type;
 
     private ArrayList<Date> workingTime; //для учета времени работы, опозданий и тд
     // 0, 2, 4... - начало работы
     // 1, 3, 5... - конец работы
 
 
-    public Worker(String name, String password) { //String hierarchy
+    public Worker(String name, String password, String type) {
         this.name = name;
         this.password = password;
-        //this.hierarchy = hierarchy;
+        this.type = type;
     }
 
     public String getName() {
         return name;
     }
 
-    /*
-    public String getHierarchy() {
-        return hierarchy;
-    }
-
-    public void setHierarchy(String hierarchy) {
-        this.hierarchy = hierarchy;
-    }
-
-     */
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getPassword() {
@@ -49,7 +46,6 @@ public class Worker {
     public ArrayList<Date> getWorkingTime() {
         return workingTime;
     }
-
 
     public void startWork() {
         if (workingTime.size() % 2 == 0) {
@@ -74,9 +70,6 @@ public class Worker {
     }
     @Override
     public String toString() {
-        return "Worker{" +
-                "name='" + name + '\'' +
-                ", workingTime=" + workingTime +
-                '}';
+        return "Worker{" + getName() + "; " + getType() + "; " + getWorkingTime() + "}";
     }
 }

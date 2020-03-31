@@ -30,11 +30,11 @@ public class Main {
         customers.add(new Customer("no", "", "", new Date(), false));
         customers.add(new Customer("Aleksei", "aparm@@gmail.com", "", new Date(), false));
 
-        workers.add(new Worker_Manager("Volodja", "123"));
-        workers.add(new Worker_Worker("Afanasij", "1234"));
-        workers.add(new Worker_Security("Dmitri", "1234"));
-        workers.add(new Worker_Coffeeman("Anatolij", "1234"));
-        workers.add(new Worker_Cleaner("Roman", "1234"));
+        workers.add(new Worker_Manager("Volodja", "123", "Mänadžer"));
+        workers.add(new Worker("Afanasij", "1234", "Töötaja"));
+        workers.add(new Worker_Security("Dmitri", "1234", "Valvur"));
+        workers.add(new Worker_Coffeeman("Anatolij", "1234", "Barista"));
+        workers.add(new Worker_Cleaner("Roman", "1234", "Koristaja"));
 
 
 
