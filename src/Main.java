@@ -21,11 +21,11 @@ public class Main {
         products.add(new Product_Coffee("Kohv", 1.2, "Americano"));
         products.add(new Product_Coffee("Kohv", 1.55, "Cappucino"));
         products.add(new Product_Bakery("Pirukas", 1.35, "Moosiga"));
-        products.add(new Product_Bakery("Pirukas", 1.49, "juustuga"));
-        products.add(new Product_Hamburger("Burger", 4.5, "Traditsiooniline"));
-        products.add(new Product_Hamburger("Burger", 5.7, "Toppelt pihviga"));
-        products.add(new Product_Sandwich("Võileib", 3.49, "tuunikalaga"));
-        products.add(new Product_Sandwich("Võileib", 3.79, "lõhega"));
+        products.add(new Product_Bakery("Pirukas", 1.49, "Juustuga"));
+        products.add(new Product_Hamburger("Burger", 4.5, "Klassika"));
+        products.add(new Product_Hamburger("Burger", 5.7, "Toppelt"));
+        products.add(new Product_Sandwich("Võileib", 3.49, "Tuunikala"));
+        products.add(new Product_Sandwich("Võileib", 3.79, "Lõhe"));
 
         customers.add(new Customer("no", "", "", new Date(), false));
         customers.add(new Customer("Aleksei", "aparm@@gmail.com", "", new Date(), false));

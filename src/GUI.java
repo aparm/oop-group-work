@@ -113,8 +113,8 @@ public class GUI {
         JFrame f=new JFrame("Make Order");
 
         for (int i = 0; i < products.size(); i++) {
-            JButton productButton = new JButton(products.get(i).getName() + " - " + products.get(i).getPrice());
-            productButton.setBounds(50, 50 + 50 * i, 120, 40);
+            JButton productButton = new JButton(products.get(i).getName() +  " " + products.get(i).getType() + " - " + products.get(i).getPrice());
+            productButton.setBounds(50, 50 + 50 * i, 520, 40);
 
             int finalI = i;
             productButton.addActionListener(new ActionListener() {
