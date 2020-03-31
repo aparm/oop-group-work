@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Worker_Manager extends Worker {
-    public Worker_Manager(String name, String password, String type) {
-        super(name, password, type);
+    public Worker_Manager(String name, String password) {
+        super(name, password);
     }
 
     @Override
     public String toString() {
-        return "Manager{" + getName() + "; " + getType() + "; " + getWorkingTime() + "}";
+        return "Mänadžer{" + getName() + "; " + getWorkingTime() + "}";
     }
 
     @Override

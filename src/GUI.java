@@ -13,7 +13,7 @@ import java.util.Date;
 public class GUI {
 
     public static void menu(){
-        JFrame fm =new JFrame("Menu");
+        JFrame fm = new JFrame("Menu");
 
         JButton showWorkersButton = new JButton("Show workers");
         showWorkersButton.setBounds(20, 20, 120, 40);
@@ -122,7 +122,7 @@ public class GUI {
         JFrame f=new JFrame("Make Order");
 
         for (int i = 0; i < products.size(); i++) {
-            JButton productButton = new JButton(products.get(i).getName() +  " " + products.get(i).getType() + " - " + products.get(i).getPrice());
+            JButton productButton = new JButton(products.get(i).getName() +  " - " + products.get(i).getPrice());
             productButton.setBounds(50, 50 + 50 * i, 220, 40);
 
             int finalI = i;
