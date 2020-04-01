@@ -108,10 +108,15 @@ public class Customer {
                 ", discount=" + discount +
                 '}';
     }
+
     static ArrayList<Customer> customers = new ArrayList<>();
 
     public static void addCostumer(){
         customers.add(new Customer("no", "", "", new Date(), false));
         customers.add(new Customer("Aleksei", "aparm@@gmail.com", "", new Date(), false));
+    }
+
+    public static void addCustumer(Customer customer) {
+        customers.add(customer);
     }
 }

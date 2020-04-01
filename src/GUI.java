@@ -237,7 +237,34 @@ public class GUI {
     }
 
     public static void addWorker() {
+        JFrame frame = new JFrame("Add new worker");
 
+        JTextField nameField = new JTextField("Name", 25);
+        JTextField passwordField = new JTextField("Password", 25);
+
+        JButton addProductButton = new JButton("Add");
+        addProductButton.setBounds(350, 150, 40, 20);
+        addProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Worker.addWorker(new Worker(nameField.getText(), passwordField.getText()));
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
+
+
+
+        JPanel contents = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        contents.add(nameField);
+        contents.add(passwordField);
+        contents.add(addProductButton);
+
+        frame.setContentPane(contents);
+        frame.setSize(400, 200);
+        frame.setVisible(true);
     }
 
 
@@ -270,7 +297,37 @@ public class GUI {
 
 
     public static void addCustomer() {
+        JFrame frame = new JFrame("Add new customer");
 
+        JTextField nameField = new JTextField("Customer name", 25);
+        JTextField emailField = new JTextField("Email", 25);
+        JTextField phoneField = new JTextField("Phone number", 25);
+
+
+        JButton addProductButton = new JButton("Add");
+        addProductButton.setBounds(350, 150, 40, 20);
+        addProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Customer.addCustumer(new Customer(nameField.getText(), emailField.getText(), phoneField.getText(), new Date(), false));
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
+
+
+
+        JPanel contents = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        contents.add(nameField);
+        contents.add(emailField);
+        contents.add(phoneField);
+        contents.add(addProductButton);
+
+        frame.setContentPane(contents);
+        frame.setSize(400, 200);
+        frame.setVisible(true);
     }
 
     public static void showProducts() {

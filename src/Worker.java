@@ -1,5 +1,3 @@
-//Позже станет суперклассом для классов разных должностей
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -62,6 +60,8 @@ public class Worker {
     public String toString() {
         return "Töötaja{" + getName() + "; " + getWorkingTime() + "}";
     }
+
+
     static ArrayList<Worker> workers = new ArrayList<>();
 
     public static void addWorker(){
@@ -70,5 +70,9 @@ public class Worker {
         workers.add(new Worker_Security("Dmitri", "1234"));
         workers.add(new Worker_Coffeeman("Anatolij", "1234"));
         workers.add(new Worker_Cleaner("Roman", "1234"));
+    }
+
+    public static void addWorker(Worker worker){
+        workers.add(worker);
     }
 }
