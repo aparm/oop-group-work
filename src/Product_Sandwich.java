@@ -5,6 +5,6 @@ public class Product_Sandwich extends Product{
 
     @Override
     public String toString() {
-        return "Võileib{" + getName() + "; " + getPrice() + "}";
+        return "Võileib " + getName() + " - " + getPrice();
     }
 }

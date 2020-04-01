@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class GUI {
 
@@ -123,8 +124,8 @@ public class GUI {
         JFrame f=new JFrame("Make Order");
 
         for (int i = 0; i < products.size(); i++) {
-            JButton productButton = new JButton(products.get(i).getName() +  " - " + products.get(i).getPrice());
-            productButton.setBounds(50, 50 + 50 * i, 220, 40);
+            JButton productButton = new JButton(products.get(i).toString());
+            productButton.setBounds(50, 50 + 50 * i, 250, 40);
 
             int finalI = i;
             productButton.addActionListener(new ActionListener() {
@@ -132,8 +133,8 @@ public class GUI {
                 public void actionPerformed(ActionEvent actionEvent) {
                     orderProducts.add(products.get(finalI));
 
-                    JButton orderProductButton = new JButton(orderProducts.get(orderProducts.indexOf(products.get(finalI))).getName());
-                    orderProductButton.setBounds(400, 50 * orderProducts.size(), 120, 40);
+                    JButton orderProductButton = new JButton(orderProducts.get(orderProducts.indexOf(products.get(finalI))).toString() + " delete");
+                    orderProductButton.setBounds(400, 50 * orderProducts.size(), 250, 40);
                     orderProductButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent actionEvent) {
@@ -145,8 +146,7 @@ public class GUI {
 
 
                     f.add(orderProductButton);
-                    /** repaint - перерисовать окно!
-                     * После добавления новой кнопки перерисавываем окно */
+                    // repaint - перерисовать окно! После добавления новой кнопки перерисавываем окно
                     f.repaint();
 
                 }
@@ -154,14 +154,41 @@ public class GUI {
             f.add(productButton);
         }
 
+        JTextField customerCodeField = new JTextField("Customer code", 25);
+        customerCodeField.setBounds(600,440, 120, 20);
+        f.add(customerCodeField);
+
+        JButton checkCustomerButton = new JButton("Check");
+        checkCustomerButton.setBounds(600, 470, 120, 20);
+        checkCustomerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if ((Customer.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
+                    checkCustomerButton.setText(Customer.findCustomer(Integer.parseInt(customerCodeField.getText())).getName());
+                }
+                else checkCustomerButton.setText("ei ole");
+            }
+        });
+        f.add(checkCustomerButton);
 
 
         JButton makeOrderButton = new JButton("Make order");
-        makeOrderButton.setBounds(600, 300, 120, 40);
+        makeOrderButton.setBounds(600, 500, 120, 40);
         makeOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Order.addOrder(new Order(Customer.customers.get(0), Worker.workers.get(0), new Date(), orderProducts));
+                if ((Customer.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
+                    Customer thisCustomer = Objects.requireNonNull(Customer.findCustomer(Integer.parseInt(customerCodeField.getText())));
+                    Order thisOrder = new OrderWithCustomer(thisCustomer, Worker.workers.get(0), new Date(), orderProducts);
+                    Order.addOrder(thisOrder);
+                    thisCustomer.addPurchasesSum(thisOrder.getTotalSum());
+                }
+                else {
+                    Order.addOrder(new Order(Worker.workers.get(0), new Date(), orderProducts));
+                }
+
+                f.setVisible(false);
+                f.dispose();
             }
         });
         f.add(makeOrderButton);
@@ -185,7 +212,12 @@ public class GUI {
 
         Object[][] array = new String[n][4];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Order.orders.get(i).getCustomer().getEmail();
+            OrderWithCustomer owc = Order.orders.get(i) instanceof OrderWithCustomer ? ((OrderWithCustomer) Order.orders.get(i)) : null;
+            if (owc != null) {
+                array[i][0] = owc.getCustomer().getEmail();
+            }
+            else { array[i][0] = "Ei ole customer"; }
+
             array[i][1] = Order.orders.get(i).getWorker().getName();
             array[i][2] = Order.orders.get(i).getDate().toString();
             array[i][3] = Double.toString(Order.orders.get(i).getTotalSum());
@@ -209,7 +241,7 @@ public class GUI {
 
 
     //открывает в новом окне табличку со всеми работниками
-    public static void showWorkers(){
+    public static void showWorkers() {
         JFrame fo = new JFrame("Workers");
 
         int n = Worker.workers.size();
@@ -236,7 +268,7 @@ public class GUI {
         fo.setVisible(true);
     }
 
-    public static void addWorker() {
+    public static void addWorker(){
         JFrame frame = new JFrame("Add new worker");
 
         JTextField nameField = new JTextField("Name", 25);

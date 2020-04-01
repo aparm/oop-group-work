@@ -5,6 +5,6 @@ public class Product_Coffee extends Product{
 
     @Override
     public String toString() {
-        return "Kohv{" + getName() + "; " + getPrice() + "}";
+        return "Kohv " + getName() + " - " + getPrice();
     }
 }

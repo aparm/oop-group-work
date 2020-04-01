@@ -5,7 +5,7 @@ public class Product_Bakery extends Product{
 
     @Override
     public String toString() {
-        return "Pirukas{" + getName() + "; " + getPrice() + "}";
+        return "Bakery: " + getName() + " - " + getPrice();
     }
 
 }

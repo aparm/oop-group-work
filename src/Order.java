@@ -4,25 +4,20 @@ import java.util.Date;
 
 //не может быть изменен через сеттеры (только для просмотра)
 public class Order {
-    private Customer customer;
+
     private Worker worker;
     private Date date;
     private ArrayList<Product> products;
 
     private double totalSum; // конечная сумма вместе со скидкой
 
-    public Order(Customer customer, Worker worker, Date date, ArrayList<Product> products) {
-        this.customer = customer;
+    public Order(Worker worker, Date date, ArrayList<Product> products) {
+
         this.worker = worker;
         this.date = date;
         this.products = products;
 
-        totalSum = productsSum(products) * (1 - customer.getDiscount());
-    }
-
-
-    public Customer getCustomer() {
-        return customer;
+        totalSum = productsSum(products);
     }
 
     public Worker getWorker() {
@@ -41,6 +36,9 @@ public class Order {
         return totalSum;
     }
 
+    public void setTotalSum(double totalSum) {
+        this.totalSum = totalSum;
+    }
 
     private double productsSum (ArrayList<Product> products) {
         double sum = 0;
@@ -53,7 +51,6 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "customer=" + customer +
                 ", worker=" + worker +
                 ", date=" + date +
                 ", products=" + products +
