@@ -47,10 +47,9 @@ public class Product {
         products.add(new Product_Sandwich("Võileib Tuunikala", 3.49));
         products.add(new Product_Sandwich("Võileib Lõhe", 3.79));
     }
-    /*
-    public void addNewProduct(Product product, String name, String price){
-        products.add(product, "lol", 1.2);
+
+    public static void addProduct(Product product){
+        products.add(product);
     }
 
-     */
 }

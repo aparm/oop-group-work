@@ -3,6 +3,7 @@
 //в общем перепишу
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -160,7 +161,7 @@ public class GUI {
         makeOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Main.addOrder(new Order(Customer.customers.get(0), Worker.workers.get(0), new Date(), orderProducts));
+                Order.addOrder(new Order(Customer.customers.get(0), Worker.workers.get(0), new Date(), orderProducts));
             }
         });
         f.add(makeOrderButton);
@@ -300,6 +301,34 @@ public class GUI {
     }
 
     public static void addProduct() {
+        JFrame frame = new JFrame("Add new product");
+
+        JTextField nameField = new JTextField("Product name", 25);
+        JTextField priceField = new JTextField("Price", 10);
+
+        JButton addProductButton = new JButton("Add");
+        addProductButton.setBounds(350, 150, 40, 20);
+        addProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Product.addProduct(new Product(nameField.getText(), Double.parseDouble(priceField.getText())));
+                frame.setVisible(false);
+                frame.dispose();
+            }
+        });
+
+
+
+
+        JPanel contents = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        contents.add(nameField);
+        contents.add(priceField);
+        contents.add(addProductButton);
+
+        frame.setContentPane(contents);
+        frame.setSize(400, 200);
+        frame.setVisible(true);
 
     }
 
