@@ -1,7 +1,3 @@
-//осторожно - говнокод, работает плохо, но работает
-//но работает не правильно
-//в общем перепишу
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +10,7 @@ import java.util.Objects;
 
 public class GUI {
 
+    //главное окно, все кнопки расписаны отдельно
     public static void menu(){
         JFrame fm = new JFrame("Menu");
 
@@ -117,43 +114,45 @@ public class GUI {
         fm.setVisible(true);
     }
 
-    public static void makeOrder() {
-        ArrayList<Product> products = Product.products;
-        ArrayList<Product> orderProducts = new ArrayList<>();
 
+    //окно совершения заказа
+    public static void makeOrder() {
         JFrame f=new JFrame("Make Order");
 
+        ArrayList<Product> products = Product.products; //все продукты, которые отображаются слева
+        ArrayList<Product> orderProducts = new ArrayList<>(); //продукты для заказа, которые отображаются справа
+
+
+        //отрисовка кнопок продуктов
         for (int i = 0; i < products.size(); i++) {
-            JButton productButton = new JButton(products.get(i).toString());
+            JButton productButton = new JButton(products.get(i).toString()); //кнопки для всех продуктов (слева)
             productButton.setBounds(50, 50 + 50 * i, 250, 40);
 
             int finalI = i;
-            productButton.addActionListener(new ActionListener() {
+            productButton.addActionListener(new ActionListener() { //при нажатии на кнопку продукта
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
-                    orderProducts.add(products.get(finalI));
+                    orderProducts.add(products.get(finalI)); //добавляем продукт в лист
 
-                    JButton orderProductButton = new JButton(orderProducts.get(orderProducts.indexOf(products.get(finalI))).toString() + " delete");
+                    JButton orderProductButton = new JButton(orderProducts.get(orderProducts.indexOf(products.get(finalI))).toString() + " delete"); //создаем кнопку этого продукта справа
                     orderProductButton.setBounds(400, 50 * orderProducts.size(), 250, 40);
                     orderProductButton.addActionListener(new ActionListener() {
                         @Override
-                        public void actionPerformed(ActionEvent actionEvent) {
-                            orderProducts.remove(orderProducts.indexOf(products.get(finalI)));
-                            f.remove(orderProductButton);
-                            f.repaint();
+                        public void actionPerformed(ActionEvent actionEvent) { //при нажатии на кнопку продукта справа
+                            orderProducts.remove(orderProducts.indexOf(products.get(finalI))); //удаляем продукт из листа
+                            f.remove(orderProductButton); //удаляем кнопку
+                            f.repaint(); //каждый раз как что-то меняем в окне, перерисовываем окно
                         }
                     });
-
-
                     f.add(orderProductButton);
-                    // repaint - перерисовать окно! После добавления новой кнопки перерисавываем окно
                     f.repaint();
-
                 }
             });
             f.add(productButton);
         }
 
+
+        //проверка есть ли покупатель в базе
         JTextField customerCodeField = new JTextField("Customer code", 25);
         customerCodeField.setBounds(600,440, 120, 20);
         f.add(customerCodeField);
@@ -172,6 +171,7 @@ public class GUI {
         f.add(checkCustomerButton);
 
 
+        //кнопка заказа, если покупатель есть - создаем заказ с покупателем, если нет - обычный заказ
         JButton makeOrderButton = new JButton("Make order");
         makeOrderButton.setBounds(600, 500, 120, 40);
         makeOrderButton.addActionListener(new ActionListener() {
@@ -187,6 +187,7 @@ public class GUI {
                     Order.addOrder(new Order(Worker.workers.get(0), new Date(), orderProducts));
                 }
 
+                //закрываем текущее окно
                 f.setVisible(false);
                 f.dispose();
             }
@@ -194,12 +195,9 @@ public class GUI {
         f.add(makeOrderButton);
 
 
-
         f.setSize(800,600);
         f.setLayout(null);
         f.setVisible(true);
-
-
     }
 
 
@@ -207,23 +205,25 @@ public class GUI {
     public static void showOrders(){
         JFrame fo = new JFrame("All orders");
 
-        int n = Order.orders.size();
+        int n = Order.orders.size(); //количество заказов
 
 
+        //данные таблицы
         Object[][] array = new String[n][4];
         for (int i = 0; i < n; i++) {
-            OrderWithCustomer owc = Order.orders.get(i) instanceof OrderWithCustomer ? ((OrderWithCustomer) Order.orders.get(i)) : null;
+            OrderWithCustomer owc = Order.orders.get(i) instanceof OrderWithCustomer ? ((OrderWithCustomer) Order.orders.get(i)) : null; //проверяем заказ с покупателем, если нет то null
             if (owc != null) {
-                array[i][0] = owc.getCustomer().getEmail();
+                array[i][0] = owc.getCustomer().getEmail(); //если не null записываем в строку покупателя емаил
             }
-            else { array[i][0] = "Ei ole customer"; }
+            else { array[i][0] = "Ei ole customer"; } //если null то пишем что нет покупателя
 
-            array[i][1] = Order.orders.get(i).getWorker().getName();
-            array[i][2] = Order.orders.get(i).getDate().toString();
-            array[i][3] = Double.toString(Order.orders.get(i).getTotalSum());
+            array[i][1] = Order.orders.get(i).getWorker().getName(); //в строке работника записываем имя работника
+            array[i][2] = Order.orders.get(i).getDate().toString(); //дата совершения заказа
+            array[i][3] = Double.toString(Order.orders.get(i).getTotalSum()); //конечная сумма заказа
         }
 
 
+        //названия столбцов
         Object[] columnsHeader = new String[] {"Customer", "Worker", "Date", "Total sum"};
 
 
@@ -240,7 +240,7 @@ public class GUI {
     }
 
 
-    //открывает в новом окне табличку со всеми работниками
+    //открывает в новом окне табличку со всеми работниками (просто 1 столбец и выводится туСтринг, позже можно сделать полноценную таблицу)
     public static void showWorkers() {
         JFrame fo = new JFrame("Workers");
 
@@ -254,8 +254,6 @@ public class GUI {
 
 
         Object[] columnsHeader = new String[] {"Worker"};
-
-
         JTable table = new JTable(array, columnsHeader);
 
 
@@ -268,6 +266,7 @@ public class GUI {
         fo.setVisible(true);
     }
 
+    //окно добавления работника (добавляется обычный работник (Worker)! не реализовано добавление по классам)
     public static void addWorker(){
         JFrame frame = new JFrame("Add new worker");
 
@@ -286,8 +285,6 @@ public class GUI {
         });
 
 
-
-
         JPanel contents = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
         contents.add(nameField);
@@ -299,7 +296,7 @@ public class GUI {
         frame.setVisible(true);
     }
 
-
+    //окно со всеми покупателями (через туСтринг, позже можно переделать в полноценную таблицу)
     public static void showCustomers() {
         JFrame fc = new JFrame("Customers");
 
@@ -313,10 +310,7 @@ public class GUI {
 
 
         Object[] columnsHeader = new String[] {"Customer"};
-
-
         JTable table = new JTable(array, columnsHeader);
-
 
         Box contents = new Box(BoxLayout.Y_AXIS);
         contents.add(new JScrollPane(table));
