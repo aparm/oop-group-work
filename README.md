@@ -107,8 +107,24 @@ toString() - töötaja tabeli prindimine aknasse Show workers
 
 ## Rühmaliikme panus:
 
+**Aleksei** - GUI kood, Customer kood, Order kood, Product kood, Worker kood.
+
+Tööaeg:  tundi
+
+**Aleksander** - Main lihtsustamine, Worker ja Product lihtsustamine, Product_<Product_name>, Worker_<Worker_Name>, README
+
+Tööaeg: 10 tundi
+
+**Koos** - Vea eemaldus, soovitused kuidas teha parem või lihtsustada
+
 ## Tegemise mured:
+
+Ei saanud lisada workingTime andmeid ja samuti kuidas lisada Product_<Product_name>, Worker_<Worker_Name> (et kasutaks vastavaid klasse toote ja töötajate lisamises)
 
 ## Hinnang:
 
+Me oleme rahul sellega, mida tegime. Saab arendada seda, millega olid mured.
+
 ## Korrektne töötamine:
+
+Pärast GUI käivitamise vaatasime, kas on tulemus, mida me ootasime, või mitte. Samuti vaatasime kas on errorit või mitte.
