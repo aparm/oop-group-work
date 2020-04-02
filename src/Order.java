@@ -9,6 +9,7 @@ public class Order {
     private Date date;
     private ArrayList<Product> products;
 
+    //Tellimuse summa koos allahindlusega.
     private double totalSum; // конечная сумма вместе со скидкой
 
     public Order(Worker worker, Date date, ArrayList<Product> products) {
@@ -58,8 +59,10 @@ public class Order {
                 '}';
     }
 
+    //Tellimuse listi loomine.
     static ArrayList<Order> orders = new ArrayList<>();
 
+    //Tellimuse lisamine.
     public static void addOrder(Order order){
         orders.add(order);
     }

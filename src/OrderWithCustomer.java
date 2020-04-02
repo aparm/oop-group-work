@@ -10,6 +10,7 @@ public class OrderWithCustomer extends Order {
         this.setTotalSum(this.getTotalSum() * (1 - customer.getDiscount()));
     }
 
+    //Tagastame kliendi andmed.
     public Customer getCustomer() {
         return customer;
     }

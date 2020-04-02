@@ -39,10 +39,10 @@ public class Product {
         products.add(new Product_Coffee("Latte", 2.09));
         products.add(new Product_Bakery("Pirukas Moosiga", 1.35));
         products.add(new Product_Bakery("Pirukas Juustuga", 1.49));
-        products.add(new Product_Hamburger("Burger ", 4.5));
-        products.add(new Product_Hamburger("Toppeltburger", 5.7));
-        products.add(new Product_Sandwich("Võileib Tuunikala", 3.49));
-        products.add(new Product_Sandwich("Võileib Lõhe", 3.79));
+        products.add(new Product_Hamburger("Klassika", 4.5));
+        products.add(new Product_Hamburger("Toppelt", 5.7));
+        products.add(new Product_Sandwich("Tunikala", 3.49));
+        products.add(new Product_Sandwich("Lõhe", 3.79));
     }
 
     public static void addProduct(Product product){

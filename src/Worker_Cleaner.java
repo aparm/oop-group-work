@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.Date;
+//import java.util.ArrayList;
+//import java.util.Date;
 
 public class Worker_Cleaner extends  Worker{
     public Worker_Cleaner(String name, String password) {
@@ -8,12 +8,15 @@ public class Worker_Cleaner extends  Worker{
 
     @Override
     public String toString() {
-        return "Koristaja{" + getName() + "; " + getWorkingTime() + "}";
+        return "Koristaja{" + getName() + "}";
     }
 
+    /*
     @Override
     public ArrayList<Date> getWorkingTime() {
         return super.getWorkingTime();
     }
+
+     */
 
 }

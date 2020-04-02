@@ -1,13 +1,17 @@
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 
 public class Worker {
     private String name;
     private String password;
 
+    //ei olnud realiseeritud
+    /*
     private ArrayList<Date> workingTime; //для учета времени работы, опозданий и тд
     // 0, 2, 4... - начало работы
     // 1, 3, 5... - конец работы
+
+     */
 
 
     public Worker(String name, String password) {
@@ -31,6 +35,7 @@ public class Worker {
         this.password = password;
     }
 
+    /*
     public ArrayList<Date> getWorkingTime() {
         return workingTime;
     }
@@ -56,9 +61,11 @@ public class Worker {
             System.out.println("Ошибка со временем работы - конец");
         }
     }
+
+     */
     @Override
     public String toString() {
-        return "Töötaja{" + getName() + "; " + getWorkingTime() + "}";
+        return "Töötaja{" + getName() + "}";
     }
 
 

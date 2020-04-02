@@ -6,11 +6,17 @@ public class Customer {
     private String email;
     private String phoneNumber;
     private Date birthday;
+
+    //Kui tellimuste summa on vähem, kui 15 ja true, siis kliet baasis saab arvet emaili.
     private boolean receiptToEmail; //если сумма покупки меньше 15 и тру, то отправить чек на почту (вывести сообщение об этом)
 
+    //Kliendi kood, et saada allahindlust kassal.
     private int code; //код чтобы назвать на кассе для скидки
+
+    //Klientide arv.
     private static int count; //количество клиентов
 
+    //Summa, mille kasutades me arvutame allahindust.
     private double purchasesSum; //сумма покупок по которой рассчитывается скидка
     private double discount;
 
@@ -22,6 +28,8 @@ public class Customer {
         this.receiptToEmail = receiptToEmail;
 
         count++;
+
+        //Kood on kliendi number.
         code = count; //пока код это просто нормер этого клиента, можно сделать что-то через рандом
     }
 
@@ -111,6 +119,7 @@ public class Customer {
 
     static ArrayList<Customer> customers = new ArrayList<>();
 
+    //Juba olevad kliendid baasis.
     public static void addCostumer(){
         customers.add(new Customer("Viktor", "vik@fdsak.com", "23487982", new Date(), false));
         customers.add(new Customer("Aleksei", "aparm@@gmail.com", "+234213534", new Date(), false));
@@ -120,6 +129,7 @@ public class Customer {
         customers.add(customer);
     }
 
+    //Vaatame, kas on sisestatud koodiga klient.
     public static Customer findCustomer(int code) {
         for (Customer customer : customers) {
             if (customer.getCode() == code) return customer;

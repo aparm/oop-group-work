@@ -11,9 +11,12 @@ import java.util.Objects;
 public class GUI {
 
     //главное окно, все кнопки расписаны отдельно
+    //GUI peaaken, kus asuvad kõik nuppud
     public static void menu(){
+        //GUI menüü loomine
         JFrame fm = new JFrame("Menu");
 
+        //Nupp, mis näitab eksisteerivaid töötajaid kasutades meetodi showWorkers()
         JButton showWorkersButton = new JButton("Show workers");
         showWorkersButton.setBounds(20, 20, 120, 40);
         showWorkersButton.addActionListener(new ActionListener() {
@@ -24,7 +27,7 @@ public class GUI {
         });
         fm.add(showWorkersButton);
 
-
+        //Nupp, mis lisab uut töötajaid kasutades meetodis addWorker()
         JButton addWorkerButton = new JButton("Add worker");
         addWorkerButton.setBounds(160, 20, 120, 40);
         addWorkerButton.addActionListener(new ActionListener() {
@@ -35,7 +38,7 @@ public class GUI {
         });
         fm.add(addWorkerButton);
 
-
+        //Nupp, mis näitab eksisteerivaid kliente kasutades meetodi showCustomers()
         JButton showCustomersButton = new JButton("Show customers");
         showCustomersButton.setBounds(20, 80, 120, 40);
         showCustomersButton.addActionListener(new ActionListener() {
@@ -46,7 +49,7 @@ public class GUI {
         });
         fm.add(showCustomersButton);
 
-
+        //Nupp, mis lisab uusi kliente kasutades meetodi addCustomer()
         JButton addCustomerButton = new JButton("Add customer");
         addCustomerButton.setBounds(160, 80, 120, 40);
         addCustomerButton.addActionListener(new ActionListener() {
@@ -57,7 +60,7 @@ public class GUI {
         });
         fm.add(addCustomerButton);
 
-
+        //Nupp, mis näitab eksisteerivaid tellimusi kasutades meetodi showOrders()
         JButton showOrdersButton = new JButton("Show orders");
         showOrdersButton.setBounds(20, 160, 120, 40);
         showOrdersButton.addActionListener(new ActionListener() {
@@ -68,7 +71,7 @@ public class GUI {
         });
         fm.add(showOrdersButton);
 
-
+        //Nupp, mis näitab eksisteerivaid tooteid kasutades meetodi showProducts()
         JButton showProductsButton = new JButton("Show products");
         showProductsButton.setBounds(20, 220, 120, 40);
         showProductsButton.addActionListener(new ActionListener() {
@@ -79,7 +82,8 @@ public class GUI {
         });
         fm.add(showProductsButton);
 
-
+        //Nupp, mis lisab uusi tooteid kasutades meetodi addProduct()
+        //Lisab klassist Product, teisi ei kasutata
         JButton addProductButton = new JButton("Add product");
         addProductButton.setBounds(160, 220, 120, 40);
         addProductButton.addActionListener(new ActionListener() {
@@ -90,6 +94,9 @@ public class GUI {
         });
         fm.add(addProductButton);
 
+        //Nupp, mis avad uut akna, kus töötaja saab lisada tellimusele seda, mis klient tahab.
+        //Kasutades meetodi makeOrder().
+        //Töötaja peab sisestama kliendi koodi, et tellimus töötaks.
         JButton makeOrderButton = new JButton("Make order");
         makeOrderButton.setBounds(600, 300, 120, 40);
         makeOrderButton.addActionListener(new ActionListener() {
@@ -101,6 +108,7 @@ public class GUI {
         });
         fm.add(makeOrderButton);
 
+        //Programm suletakse, kui vajutad exit nuppu.
         fm.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {
@@ -108,7 +116,7 @@ public class GUI {
             }
         });
 
-
+        //Akna mõõtmed.
         fm.setSize(800,400);
         fm.setLayout(null);
         fm.setVisible(true);
@@ -116,15 +124,21 @@ public class GUI {
 
 
     //окно совершения заказа
+    //Make Order aken.
     public static void makeOrder() {
         JFrame f=new JFrame("Make Order");
 
+        //Tooteid, mis on vasakul on juba eksisteerivad.
         ArrayList<Product> products = Product.products; //все продукты, которые отображаются слева
+        //Tooteid, mis on paremal lisatakse tellimusele.
         ArrayList<Product> orderProducts = new ArrayList<>(); //продукты для заказа, которые отображаются справа
 
 
         //отрисовка кнопок продуктов
+        //Nuppude kujutis.
         for (int i = 0; i < products.size(); i++) {
+
+            //Tooteid, mis on vasakul.
             JButton productButton = new JButton(products.get(i).toString()); //кнопки для всех продуктов (слева)
             productButton.setBounds(50, 50 + 50 * i, 250, 40);
 
@@ -132,15 +146,20 @@ public class GUI {
             productButton.addActionListener(new ActionListener() { //при нажатии на кнопку продукта
                 @Override
                 public void actionPerformed(ActionEvent actionEvent) {
+                    // Mis iganes toode nuppu vajutades lisame seda toote listi.
                     orderProducts.add(products.get(finalI)); //добавляем продукт в лист
 
+                    //Kujutame nuppu sellele tootele paremal.
                     JButton orderProductButton = new JButton(orderProducts.get(orderProducts.indexOf(products.get(finalI))).toString() + " delete"); //создаем кнопку этого продукта справа
                     orderProductButton.setBounds(400, 50 * orderProducts.size(), 250, 40);
                     orderProductButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent actionEvent) { //при нажатии на кнопку продукта справа
+                            //Kui me vajutame mis iganes toote nuppule, mis on paremal, siis kustutame selle toote listist.
                             orderProducts.remove(orderProducts.indexOf(products.get(finalI))); //удаляем продукт из листа
+                            //Kustutame nuppu.
                             f.remove(orderProductButton); //удаляем кнопку
+                            //Iga kord, kui midagi muutub aknas, me ünberjoonistame seda.
                             f.repaint(); //каждый раз как что-то меняем в окне, перерисовываем окно
                         }
                     });
@@ -153,6 +172,7 @@ public class GUI {
 
 
         //проверка есть ли покупатель в базе
+        //Vaatame, kas klient on baasis.
         JTextField customerCodeField = new JTextField("Customer code", 25);
         customerCodeField.setBounds(600,440, 120, 20);
         f.add(customerCodeField);
@@ -172,6 +192,7 @@ public class GUI {
 
 
         //кнопка заказа, если покупатель есть - создаем заказ с покупателем, если нет - обычный заказ
+        //Tellimuse nupp, kui on olemas baasist klient - kliendiga tellimus, kui ei ole - tavaline tellimus.
         JButton makeOrderButton = new JButton("Make order");
         makeOrderButton.setBounds(600, 500, 120, 40);
         makeOrderButton.addActionListener(new ActionListener() {
@@ -188,13 +209,14 @@ public class GUI {
                 }
 
                 //закрываем текущее окно
+                //Suletame jooksevat akent.
                 f.setVisible(false);
                 f.dispose();
             }
         });
         f.add(makeOrderButton);
 
-
+        //Make Order akna mõõtmed.
         f.setSize(800,600);
         f.setLayout(null);
         f.setVisible(true);
@@ -202,28 +224,38 @@ public class GUI {
 
 
     //открывает в новом окне табличку со всеми заказами
+    //Uues aknas avad tabelit tellimustega.
     public static void showOrders(){
         JFrame fo = new JFrame("All orders");
 
+        //Tellimuste arv.
         int n = Order.orders.size(); //количество заказов
 
 
         //данные таблицы
+        //Tabeli andmeid.
         Object[][] array = new String[n][4];
         for (int i = 0; i < n; i++) {
+            //Kontrollime tellimust koos baasis klientiga, kui ei ole - siis on null.
             OrderWithCustomer owc = Order.orders.get(i) instanceof OrderWithCustomer ? ((OrderWithCustomer) Order.orders.get(i)) : null; //проверяем заказ с покупателем, если нет то null
             if (owc != null) {
+                //Kui ei ole null, siis paneme tellija reale tema emaili.
                 array[i][0] = owc.getCustomer().getEmail(); //если не null записываем в строку покупателя емаил
             }
+            //Kui on null, siis kirjutame et ei ole kliendi baasist.
             else { array[i][0] = "Ei ole customer"; } //если null то пишем что нет покупателя
 
+            //Töötaja reas kirjutame töötaja nimi.
             array[i][1] = Order.orders.get(i).getWorker().getName(); //в строке работника записываем имя работника
+            //Tellimuse kuupäev.
             array[i][2] = Order.orders.get(i).getDate().toString(); //дата совершения заказа
+            //Tellimuse summa.
             array[i][3] = Double.toString(Order.orders.get(i).getTotalSum()); //конечная сумма заказа
         }
 
 
         //названия столбцов
+        //Veerude nimed
         Object[] columnsHeader = new String[] {"Customer", "Worker", "Date", "Total sum"};
 
 
@@ -241,6 +273,7 @@ public class GUI {
 
 
     //открывает в новом окне табличку со всеми работниками (просто 1 столбец и выводится туСтринг, позже можно сделать полноценную таблицу)
+    //Uues aknas avad tabelit koos kõikededa töötajatega.
     public static void showWorkers() {
         JFrame fo = new JFrame("Workers");
 
@@ -267,6 +300,7 @@ public class GUI {
     }
 
     //окно добавления работника (добавляется обычный работник (Worker)! не реализовано добавление по классам)
+    //Töötaja lisamise aken. (Lisatakse tavalist töötajat (Worker), erinavete töötajate lisamine ei ole realiseeritud.)
     public static void addWorker(){
         JFrame frame = new JFrame("Add new worker");
 
@@ -297,6 +331,7 @@ public class GUI {
     }
 
     //окно со всеми покупателями (через туСтринг, позже можно переделать в полноценную таблицу)
+    //Kõike klientidega baasis tabel.
     public static void showCustomers() {
         JFrame fc = new JFrame("Customers");
 
@@ -321,7 +356,7 @@ public class GUI {
         fc.setVisible(true);
     }
 
-
+    //Uue klienti lisamise aken.
     public static void addCustomer() {
         JFrame frame = new JFrame("Add new customer");
 
@@ -355,7 +390,7 @@ public class GUI {
         frame.setSize(400, 200);
         frame.setVisible(true);
     }
-
+    //Aken, mis näitab kõike eksisteerivaid tooteid.
     public static void showProducts() {
         JFrame fp = new JFrame("Products");
 
@@ -383,6 +418,7 @@ public class GUI {
         fp.setVisible(true);
     }
 
+    //Aken, kus me lisame uut tooteid.
     public static void addProduct() {
         JFrame frame = new JFrame("Add new product");
 
