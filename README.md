@@ -109,7 +109,7 @@ toString() - töötaja tabeli prindimine aknasse Show workers
 
 **Aleksei** - GUI kood, Customer kood, Order kood, Product kood, Worker kood.
 
-Tööaeg:  tundi
+Tööaeg: 15 tundi
 
 **Aleksander** - Main lihtsustamine, Worker ja Product lihtsustamine, Product_<Product_name>, Worker_<Worker_Name>, README
 
