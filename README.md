@@ -1,14 +1,15 @@
 # Rühmatöö nr. 1
 
-**Autorid:** Aleksei Parm, Aleksander Daniel Veske
+## Autorid:
+Aleksei Parm, Aleksander Daniel Veske
 
-**Projekti põhjalik kirjeldus:**
+## Projekti põhjalik kirjeldus:
 See projekt on kohvikus mädžeri programm.
 Sel programmis saab mänedžer vaadata kõike tooteid/töötajaid/kliente/tellimusi ja lisada uusi.
 Samuti saad teha uut tellimust aknas Make Order, kus ta lisab erinevaid tooteid korvi.
 Kasutusjuhist minu arvates ei ole vaja, selle pärast töötamine selles programmis on intuitiivne, kõik nuppud on tekstiga, mis iseloomustab tegevusi, mis saab teha selle nuppuga.
 
-**Klassid:**
+## Klassid:
 
 **Customer** - see klass on klientide klass, kus on list, kus on kõik registreeritud klientid olemas
 
@@ -69,7 +70,7 @@ addWorker() - uue töötajate lisamine
 **Worker_<Worker_Name>** -
 toString() - töötaja tabeli prindimine aknasse Show workers
 
-**Tegemise protsess:**
+## Tegemise protsess:
 1. Idee loomine.
 2. Mõtlemine, kuidas seda teha.
 3. Kohustuse jagamine.
@@ -78,10 +79,10 @@ toString() - töötaja tabeli prindimine aknasse Show workers
 6. Koodi lihtsustamine.
 7. Töö lõpp.
 
-**Rühmaliikme panus:**
+## Rühmaliikme panus:
 
-**Tegemise mured:**
+## Tegemise mured:
 
-**Hinnang:**
+## Hinnang:
 
-**Korrektne töötamine:**
+## Korrektne töötamine:
