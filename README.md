@@ -26,7 +26,7 @@ addCostumer() - uue registreeritud klienti lisamine
 findCustomer() - kliendi otsimine, et allahindlust anda ja vajadusel arve emaili saada
 
 
-### GUI - GUI
+### GUI - klass, mis kujutab kõik, mis on tehtud projektis
 
 #### Meetodid
 
@@ -48,13 +48,13 @@ showProducts() - kõige eksisteerivate toote näitamine
 
 addProduct() - uute toote lisamine
 
-### Main - main
+### Main - peameetod
 
 #### Meetodid
 
 GUI.menu() - GUI kävitamine
 
-### Order - order
+### Order - klass, kus toimuvad arvutused tellimustele
 
 #### Meetodid
 
@@ -64,25 +64,25 @@ toString() -  tellimuste tabeli prindimine aknasse Show orders
 
 addOrder() - uue tellimuste lisamine
 
-### OrderWithCustomer -
+### OrderWithCustomer - klass, kust me võtame andmed
 
 #### Meetodid
 
 getCustomer() - kui juba registreeritud klient tegi tellimust, tema andmete võtmine
 
-### Product - pr
+### Product - klass, kus asuvad tooted
 
 #### Meetodid
 
 addProduct() - uute toote lisamine
 
-### Product_<Product_Name> -
+### Product_<Product_Name> - klassid, kus asuvad erineva tüübiga tooted
 
 #### Meetodid
 
 toString() - toote tabeli prindimine aknasse Show products
 
-### Worker -
+### Worker - klass, kus asuvad töötajad
 
 #### Meetodid
 
@@ -90,7 +90,7 @@ toString() - töötajate tabeli prindimine aknasse Show workers
 
 addWorker() - uue töötajate lisamine
 
-### Worker_<Worker_Name> -
+### Worker_<Worker_Name> - klassid, kus asuvad erineva tüübiga töötajad
 
 #### Meetodid
 
