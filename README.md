@@ -13,6 +13,8 @@ Kasutusjuhist minu arvates ei ole vaja, selle pärast töötamine selles program
 
 ### Customer - see klass on klientide klass, kus on list, kus on kõik registreeritud klientid olemas
 
+#### Meetodid
+
 addPurchasesSum() - kõike tellimuste summa
 
 updateDiscount() - allahindlus kliendile sõltuv summast
@@ -24,8 +26,9 @@ addCostumer() - uue registreeritud klienti lisamine
 findCustomer() - kliendi otsimine, et allahindlust anda ja vajadusel arve emaili saada
 
 
-### GUI 
--
+### GUI - GUI
+
+#### Meetodid
 
 menu() - GUI peaaken, koos kõigete nuppudega
 
@@ -45,40 +48,51 @@ showProducts() - kõige eksisteerivate toote näitamine
 
 addProduct() - uute toote lisamine
 
-### Main 
--
+### Main - main
+
+#### Meetodid
 
 GUI.menu() - GUI kävitamine
 
-Order -
+### Order - order
+
+#### Meetodid
+
 productsSum() - kõige toote summa
 
 toString() -  tellimuste tabeli prindimine aknasse Show orders
 
 addOrder() - uue tellimuste lisamine
 
-OrderWithCustomer -
+### OrderWithCustomer -
+
+#### Meetodid
+
 getCustomer() - kui juba registreeritud klient tegi tellimust, tema andmete võtmine
 
-### Product
--
+### Product - pr
+
+#### Meetodid
 
 addProduct() - uute toote lisamine
 
-### Product_<Product_Name>
--
+### Product_<Product_Name> -
+
+#### Meetodid
 
 toString() - toote tabeli prindimine aknasse Show products
 
-### Worker
--
+### Worker -
+
+#### Meetodid
 
 toString() - töötajate tabeli prindimine aknasse Show workers
 
 addWorker() - uue töötajate lisamine
 
-### Worker_<Worker_Name> 
--
+### Worker_<Worker_Name> -
+
+#### Meetodid
 
 toString() - töötaja tabeli prindimine aknasse Show workers
 
