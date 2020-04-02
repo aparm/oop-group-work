@@ -9,6 +9,7 @@ Samuti saad teha uut tellimust aknas Make Order, kus ta lisab erinevaid tooteid 
 Kasutusjuhist minu arvates ei ole vaja, selle pärast töötamine selles programmis on intuitiivne, kõik nuppud on tekstiga, mis iseloomustab tegevusi, mis saab teha selle nuppuga.
 
 **Klassid:**
+
 **Customer** - see klass on klientide klass, kus on list, kus on kõik registreeritud klientid olemas
 
 addPurchasesSum() - kõike tellimuste summa
