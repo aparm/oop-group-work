@@ -12,7 +12,7 @@ Kasutusjuhist minu arvates ei ole vaja, selle pärast töötamine selles program
 ## Klassid:
 
 ### Customer
-- see klass on klientide klass, kus on list, kus on kõik registreeritud klientid olemas
+see klass on klientide klass, kus on list, kus on kõik registreeritud klientid olemas
 
 addPurchasesSum() - kõike tellimuste summa
 
