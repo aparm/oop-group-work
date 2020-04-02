@@ -11,7 +11,8 @@ Kasutusjuhist minu arvates ei ole vaja, selle pärast töötamine selles program
 
 ## Klassid:
 
-**Customer** - see klass on klientide klass, kus on list, kus on kõik registreeritud klientid olemas
+### Customer
+- see klass on klientide klass, kus on list, kus on kõik registreeritud klientid olemas
 
 addPurchasesSum() - kõike tellimuste summa
 
@@ -24,7 +25,9 @@ addCostumer() - uue registreeritud klienti lisamine
 findCustomer() - kliendi otsimine, et allahindlust anda ja vajadusel arve emaili saada
 
 
-**GUI** -
+### GUI 
+-
+
 menu() - GUI peaaken, koos kõigete nuppudega
 
 makeOrder() - aken, et teha uut tellimust
@@ -43,7 +46,9 @@ showProducts() - kõige eksisteerivate toote näitamine
 
 addProduct() - uute toote lisamine
 
-**Main** -
+### Main 
+-
+
 GUI.menu() - GUI kävitamine
 
 Order -
@@ -56,18 +61,26 @@ addOrder() - uue tellimuste lisamine
 OrderWithCustomer -
 getCustomer() - kui juba registreeritud klient tegi tellimust, tema andmete võtmine
 
-**Product** -
+### Product
+-
+
 addProduct() - uute toote lisamine
 
-**Product_<Product_Name>** -
+### Product_<Product_Name>
+-
+
 toString() - toote tabeli prindimine aknasse Show products
 
-**Worker** -
+### Worker
+-
+
 toString() - töötajate tabeli prindimine aknasse Show workers
 
 addWorker() - uue töötajate lisamine
 
-**Worker_<Worker_Name>** -
+### Worker_<Worker_Name> 
+-
+
 toString() - töötaja tabeli prindimine aknasse Show workers
 
 ## Tegemise protsess:
