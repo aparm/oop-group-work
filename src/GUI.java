@@ -209,6 +209,7 @@ public class GUI {
                 }
                 else {
                     OrdersList.addOrder(new Order(WorkersList.workers.get(0), new Date(), orderProducts));
+                    OrdersList.saveToFile();
                 }
 
                 //закрываем текущее окно

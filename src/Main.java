@@ -12,6 +12,8 @@ public class Main {
         //Lisame juba antud töötajaid klassist Töötaja.
         WorkersList.addWorker();
 
+        OrdersList.loadFromFile();
+
         //Käivitame GUI, kus toimuvad kõik teised asjad.
         GUI.menu();
     }

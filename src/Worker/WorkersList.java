@@ -18,6 +18,13 @@ public class WorkersList {
         workers.add(worker);
     }
 
+    public static Worker findWorker(String name) {
+        for (Worker worker : workers) {
+            if (worker.getName().equals(name)) return worker;
+        }
+        return null;
+    }
+
     //сохраняет лист в файл
     public static void saveToFile() {
 
