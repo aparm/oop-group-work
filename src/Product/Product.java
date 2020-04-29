@@ -1,4 +1,4 @@
-//позже станет суперклассом для классов "Кофе", "Пироженные", "Завтраки" и тд
+package Product;//позже станет суперклассом для классов "Кофе", "Пироженные", "Завтраки" и тд
 
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class Product {
     public String toString() {
         return name + " - " + price;
     }
-    static ArrayList<Product> products = new ArrayList<>();
+    public static ArrayList<Product> products = new ArrayList<>();
 
     public static void addProduct(){
         products.add(new Product_Coffee("Americano", 1.2));

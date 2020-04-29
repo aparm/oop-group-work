@@ -1,3 +1,5 @@
+package Worker;
+
 import java.util.ArrayList;
 //import java.util.Date;
 
@@ -69,7 +71,7 @@ public class Worker {
     }
 
 
-    static ArrayList<Worker> workers = new ArrayList<>();
+    public static ArrayList<Worker> workers = new ArrayList<>();
 
     public static void addWorker(){
         workers.add(new Worker_Manager("Volodja", "123"));

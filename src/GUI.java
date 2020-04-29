@@ -1,3 +1,6 @@
+import Product.Product;
+import Worker.Worker;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -83,7 +86,7 @@ public class GUI {
         fm.add(showProductsButton);
 
         //Nupp, mis lisab uusi tooteid kasutades meetodi addProduct()
-        //Lisab klassist Product, teisi ei kasutata
+        //Lisab klassist Product.Product, teisi ei kasutata
         JButton addProductButton = new JButton("Add product");
         addProductButton.setBounds(160, 220, 120, 40);
         addProductButton.addActionListener(new ActionListener() {
@@ -299,8 +302,8 @@ public class GUI {
         fo.setVisible(true);
     }
 
-    //окно добавления работника (добавляется обычный работник (Worker)! не реализовано добавление по классам)
-    //Töötaja lisamise aken. (Lisatakse tavalist töötajat (Worker), erinavete töötajate lisamine ei ole realiseeritud.)
+    //окно добавления работника (добавляется обычный работник (Worker.Worker)! не реализовано добавление по классам)
+    //Töötaja lisamise aken. (Lisatakse tavalist töötajat (Worker.Worker), erinavete töötajate lisamine ei ole realiseeritud.)
     public static void addWorker(){
         JFrame frame = new JFrame("Add new worker");
 
@@ -422,7 +425,7 @@ public class GUI {
     public static void addProduct() {
         JFrame frame = new JFrame("Add new product");
 
-        JTextField nameField = new JTextField("Product name", 25);
+        JTextField nameField = new JTextField("Product.Product name", 25);
         JTextField priceField = new JTextField("Price", 10);
 
         JButton addProductButton = new JButton("Add");

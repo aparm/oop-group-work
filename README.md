@@ -70,7 +70,7 @@ addOrder() - uue tellimuste lisamine
 
 getCustomer() - kui juba registreeritud klient tegi tellimust, tema andmete võtmine
 
-### Product - klass, kus asuvad tooted
+### Product.Product - klass, kus asuvad tooted
 
 #### Meetodid
 
@@ -82,7 +82,7 @@ addProduct() - uute toote lisamine
 
 toString() - toote tabeli prindimine aknasse Show products
 
-### Worker - klass, kus asuvad töötajad
+### Worker.Worker - klass, kus asuvad töötajad
 
 #### Meetodid
 
@@ -107,11 +107,11 @@ toString() - töötaja tabeli prindimine aknasse Show workers
 
 ## Rühmaliikme panus:
 
-**Aleksei** - GUI kood, Customer kood, Order kood, Product kood, Worker kood.
+**Aleksei** - GUI kood, Customer kood, Order kood, Product.Product kood, Worker.Worker kood.
 
 Tööaeg: 15 tundi
 
-**Aleksander** - Main lihtsustamine, Worker ja Product lihtsustamine, Product_<Product_name>, Worker_<Worker_Name>, README
+**Aleksander** - Main lihtsustamine, Worker.Worker ja Product.Product lihtsustamine, Product_<Product_name>, Worker_<Worker_Name>, README
 
 Tööaeg: 10 tundi
 

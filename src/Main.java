@@ -1,8 +1,11 @@
+import Product.Product;
+import Worker.Worker;
+
 //Peameetod.
 public class Main {
     public static void main(String[] args) {
 
-        //Lisame juba antud tooteid klassist Product.
+        //Lisame juba antud tooteid klassist Product.Product.
         Product.addProduct();
         //Lisame juba antud kliente klassist Customer.
         CustomersList.loadFromFile();

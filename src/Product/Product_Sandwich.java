@@ -1,3 +1,5 @@
+package Product;
+
 public class Product_Sandwich extends Product{
     public Product_Sandwich(String name, double price) {
         super(name, price);
