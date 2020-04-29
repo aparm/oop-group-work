@@ -117,23 +117,4 @@ public class Customer {
                 '}';
     }
 
-    static ArrayList<Customer> customers = new ArrayList<>();
-
-    //Juba olevad kliendid baasis.
-    public static void addCostumer(){
-        customers.add(new Customer("Viktor", "vik@fdsak.com", "23487982", new Date(), false));
-        customers.add(new Customer("Aleksei", "aparm@@gmail.com", "+234213534", new Date(), false));
-    }
-
-    public static void addCustumer(Customer customer) {
-        customers.add(customer);
-    }
-
-    //Vaatame, kas on sisestatud koodiga klient.
-    public static Customer findCustomer(int code) {
-        for (Customer customer : customers) {
-            if (customer.getCode() == code) return customer;
-        }
-        return null;
-    }
 }

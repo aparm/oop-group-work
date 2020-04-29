@@ -5,7 +5,7 @@ public class Main {
         //Lisame juba antud tooteid klassist Product.
         Product.addProduct();
         //Lisame juba antud kliente klassist Customer.
-        Customer.addCostumer();
+        CustomersList.loadFromFile();
         //Lisame juba antud töötajaid klassist Töötaja.
         Worker.addWorker();
 

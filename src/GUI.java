@@ -182,8 +182,8 @@ public class GUI {
         checkCustomerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if ((Customer.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
-                    checkCustomerButton.setText(Customer.findCustomer(Integer.parseInt(customerCodeField.getText())).getName());
+                if ((CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
+                    checkCustomerButton.setText(CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText())).getName());
                 }
                 else checkCustomerButton.setText("ei ole");
             }
@@ -198,8 +198,8 @@ public class GUI {
         makeOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if ((Customer.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
-                    Customer thisCustomer = Objects.requireNonNull(Customer.findCustomer(Integer.parseInt(customerCodeField.getText())));
+                if ((CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
+                    Customer thisCustomer = Objects.requireNonNull(CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText())));
                     Order thisOrder = new OrderWithCustomer(thisCustomer, Worker.workers.get(0), new Date(), orderProducts);
                     Order.addOrder(thisOrder);
                     thisCustomer.addPurchasesSum(thisOrder.getTotalSum());
@@ -335,12 +335,12 @@ public class GUI {
     public static void showCustomers() {
         JFrame fc = new JFrame("Customers");
 
-        int n = Customer.customers.size();
+        int n = CustomersList.customers.size();
 
 
         Object[][] array = new String[n][1];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Customer.customers.get(i).toString();
+            array[i][0] = CustomersList.customers.get(i).toString();
         }
 
 
@@ -370,7 +370,7 @@ public class GUI {
         addProductButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Customer.addCustumer(new Customer(nameField.getText(), emailField.getText(), phoneField.getText(), new Date(), false));
+                CustomersList.addCustumer(new Customer(nameField.getText(), emailField.getText(), phoneField.getText(), new Date(), false));
                 frame.setVisible(false);
                 frame.dispose();
             }
