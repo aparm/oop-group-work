@@ -1,5 +1,5 @@
-import Product.Product;
-import Worker.Worker;
+import Product.*;
+import Worker.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -132,7 +132,7 @@ public class GUI {
         JFrame f=new JFrame("Make Order");
 
         //Tooteid, mis on vasakul on juba eksisteerivad.
-        ArrayList<Product> products = Product.products; //все продукты, которые отображаются слева
+        ArrayList<Product> products = ProductsList.products; //все продукты, которые отображаются слева
         //Tooteid, mis on paremal lisatakse tellimusele.
         ArrayList<Product> orderProducts = new ArrayList<>(); //продукты для заказа, которые отображаются справа
 
@@ -203,12 +203,12 @@ public class GUI {
             public void actionPerformed(ActionEvent actionEvent) {
                 if ((CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
                     Customer thisCustomer = Objects.requireNonNull(CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText())));
-                    Order thisOrder = new OrderWithCustomer(thisCustomer, Worker.workers.get(0), new Date(), orderProducts);
-                    Order.addOrder(thisOrder);
+                    Order thisOrder = new OrderWithCustomer(thisCustomer, WorkersList.workers.get(0), new Date(), orderProducts);
+                    OrdersList.addOrder(thisOrder);
                     thisCustomer.addPurchasesSum(thisOrder.getTotalSum());
                 }
                 else {
-                    Order.addOrder(new Order(Worker.workers.get(0), new Date(), orderProducts));
+                    OrdersList.addOrder(new Order(WorkersList.workers.get(0), new Date(), orderProducts));
                 }
 
                 //закрываем текущее окно
@@ -232,7 +232,7 @@ public class GUI {
         JFrame fo = new JFrame("All orders");
 
         //Tellimuste arv.
-        int n = Order.orders.size(); //количество заказов
+        int n = OrdersList.orders.size(); //количество заказов
 
 
         //данные таблицы
@@ -240,7 +240,7 @@ public class GUI {
         Object[][] array = new String[n][4];
         for (int i = 0; i < n; i++) {
             //Kontrollime tellimust koos baasis klientiga, kui ei ole - siis on null.
-            OrderWithCustomer owc = Order.orders.get(i) instanceof OrderWithCustomer ? ((OrderWithCustomer) Order.orders.get(i)) : null; //проверяем заказ с покупателем, если нет то null
+            OrderWithCustomer owc = OrdersList.orders.get(i) instanceof OrderWithCustomer ? ((OrderWithCustomer) OrdersList.orders.get(i)) : null; //проверяем заказ с покупателем, если нет то null
             if (owc != null) {
                 //Kui ei ole null, siis paneme tellija reale tema emaili.
                 array[i][0] = owc.getCustomer().getEmail(); //если не null записываем в строку покупателя емаил
@@ -249,11 +249,11 @@ public class GUI {
             else { array[i][0] = "Ei ole customer"; } //если null то пишем что нет покупателя
 
             //Töötaja reas kirjutame töötaja nimi.
-            array[i][1] = Order.orders.get(i).getWorker().getName(); //в строке работника записываем имя работника
+            array[i][1] = OrdersList.orders.get(i).getWorker().getName(); //в строке работника записываем имя работника
             //Tellimuse kuupäev.
-            array[i][2] = Order.orders.get(i).getDate().toString(); //дата совершения заказа
+            array[i][2] = OrdersList.orders.get(i).getDate().toString(); //дата совершения заказа
             //Tellimuse summa.
-            array[i][3] = Double.toString(Order.orders.get(i).getTotalSum()); //конечная сумма заказа
+            array[i][3] = Double.toString(OrdersList.orders.get(i).getTotalSum()); //конечная сумма заказа
         }
 
 
@@ -280,12 +280,12 @@ public class GUI {
     public static void showWorkers() {
         JFrame fo = new JFrame("Workers");
 
-        int n = Worker.workers.size();
+        int n = WorkersList.workers.size();
 
 
         Object[][] array = new String[n][1];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Worker.workers.get(i).toString();
+            array[i][0] = WorkersList.workers.get(i).toString();
         }
 
 
@@ -315,7 +315,7 @@ public class GUI {
         addProductButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Worker.addWorker(new Worker(nameField.getText(), passwordField.getText()));
+                WorkersList.addWorker(new Worker(nameField.getText(), passwordField.getText()));
                 frame.setVisible(false);
                 frame.dispose();
             }
@@ -397,12 +397,12 @@ public class GUI {
     public static void showProducts() {
         JFrame fp = new JFrame("Products");
 
-        int n = Product.products.size();
+        int n = ProductsList.products.size();
 
 
         Object[][] array = new String[n][1];
         for (int i = 0; i < n; i++) {
-            array[i][0] = Product.products.get(i).toString();
+            array[i][0] = ProductsList.products.get(i).toString();
         }
 
 
@@ -433,7 +433,7 @@ public class GUI {
         addProductButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Product.addProduct(new Product(nameField.getText(), Double.parseDouble(priceField.getText())));
+                ProductsList.addProduct(new Product(nameField.getText(), Double.parseDouble(priceField.getText())));
                 frame.setVisible(false);
                 frame.dispose();
             }

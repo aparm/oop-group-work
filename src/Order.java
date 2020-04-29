@@ -62,12 +62,6 @@ public class Order {
                 '}';
     }
 
-    //Tellimuse listi loomine.
-    static ArrayList<Order> orders = new ArrayList<>();
 
-    //Tellimuse lisamine.
-    public static void addOrder(Order order){
-        orders.add(order);
-    }
 
 }
