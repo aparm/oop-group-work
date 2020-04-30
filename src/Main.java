@@ -9,10 +9,13 @@ public class Main {
         ProductsList.addProduct();
         //Lisame juba antud kliente klassist Customer.
         CustomersList.loadFromFile();
-        //Lisame juba antud töötajaid klassist Töötaja.
-        WorkersList.addWorker();
 
+        //Lisame juba antud töötajaid failist "workers.dat".
+        WorkersList.loadFromFile();
+
+        //Lisame juba antud orders failist "orders.dat".
         OrdersList.loadFromFile();
+
 
         //Käivitame GUI, kus toimuvad kõik teised asjad.
         GUI.menu();

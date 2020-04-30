@@ -317,6 +317,7 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 WorkersList.addWorker(new Worker(nameField.getText(), passwordField.getText()));
+                WorkersList.saveToFile();
                 frame.setVisible(false);
                 frame.dispose();
             }

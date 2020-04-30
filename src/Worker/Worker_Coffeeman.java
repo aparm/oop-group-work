@@ -1,5 +1,4 @@
-package Worker;//import java.util.ArrayList;
-//import java.util.Date;
+package Worker;
 
 public class Worker_Coffeeman extends Worker {
     public Worker_Coffeeman(String name, String password) {
@@ -11,11 +10,4 @@ public class Worker_Coffeeman extends Worker {
         return "Barista{" + getName() + "}";
     }
 
-    /*
-    @Override
-    public ArrayList<Date> getWorkingTime() {
-        return super.getWorkingTime();
-    }
-
-     */
 }

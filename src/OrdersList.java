@@ -1,4 +1,3 @@
-import Product.Product;
 import Worker.*;
 
 import java.io.*;
