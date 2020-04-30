@@ -74,6 +74,10 @@ public class Customer {
         return code;
     }
 
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     public double getPurchasesSum() {
         return purchasesSum;
     }

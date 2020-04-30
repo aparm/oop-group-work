@@ -376,6 +376,7 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 CustomersList.addCustumer(new Customer(nameField.getText(), emailField.getText(), phoneField.getText(), new Date(), false));
+                CustomersList.saveToFile();
                 frame.setVisible(false);
                 frame.dispose();
             }

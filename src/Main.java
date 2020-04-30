@@ -8,7 +8,7 @@ public class Main {
         //Lisame juba antud tooteid failist "products.dat".
         ProductsList.loadFromFile();
 
-        //Lisame juba antud kliente klassist Customer.
+        //Lisame juba antud kliente failist "customers.dat".
         CustomersList.loadFromFile();
 
         //Lisame juba antud töötajaid failist "workers.dat".
