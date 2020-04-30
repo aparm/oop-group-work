@@ -6,8 +6,11 @@ public class Product_Bakery extends Product{
     }
 
     @Override
+    public String getName() {return "Bakery:" + super.getName(); }
+
+    @Override
     public String toString() {
-        return "Bakery: " + getName() + " - " + getPrice();
+        return "Bakery: " + super.getName() + " - " + getPrice();
     }
 
 }

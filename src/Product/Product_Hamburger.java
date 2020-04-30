@@ -6,7 +6,10 @@ public class Product_Hamburger extends Product{
     }
 
     @Override
+    public String getName() {return "Hamburger:" + super.getName(); }
+
+    @Override
     public String toString() {
-        return "Hamburger " + getName() + " - " + getPrice();
+        return "Hamburger " + super.getName() + " - " + getPrice();
     }
 }

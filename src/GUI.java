@@ -436,6 +436,7 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 ProductsList.addProduct(new Product(nameField.getText(), Double.parseDouble(priceField.getText())));
+                ProductsList.saveToFile();
                 frame.setVisible(false);
                 frame.dispose();
             }

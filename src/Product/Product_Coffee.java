@@ -6,7 +6,10 @@ public class Product_Coffee extends Product{
     }
 
     @Override
+    public String getName() {return "Kohv:" + super.getName(); }
+
+    @Override
     public String toString() {
-        return "Kohv " + getName() + " - " + getPrice();
+        return "Kohv " + super.getName() + " - " + getPrice();
     }
 }

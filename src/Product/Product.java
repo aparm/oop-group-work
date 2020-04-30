@@ -1,6 +1,4 @@
-package Product;//позже станет суперклассом для классов "Кофе", "Пироженные", "Завтраки" и тд
-
-import java.util.ArrayList;
+package Product;
 
 public class Product {
     private String name;

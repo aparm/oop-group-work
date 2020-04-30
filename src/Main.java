@@ -5,8 +5,9 @@ import Worker.*;
 public class Main {
     public static void main(String[] args) {
 
-        //Lisame juba antud tooteid klassist Product.Product.
-        ProductsList.addProduct();
+        //Lisame juba antud tooteid failist "products.dat".
+        ProductsList.loadFromFile();
+
         //Lisame juba antud kliente klassist Customer.
         CustomersList.loadFromFile();
 
