@@ -137,6 +137,19 @@ public class GUI {
         ArrayList<Product> orderProducts = new ArrayList<>(); //продукты для заказа, которые отображаются справа
 
 
+        //создание panel и scrollPane для прокрутки
+        JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(300,100 + products.size() * 50));
+        panel.setOpaque(false);
+        panel.setLayout(null);
+
+        JScrollPane spane = new JScrollPane();
+        spane.setBounds(5,5,350,550);
+        spane.setOpaque(false);
+        spane.getViewport().setOpaque(false);
+        spane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        spane.setViewportView(panel);
+
         //отрисовка кнопок продуктов
         //Nuppude kujutis.
         for (int i = 0; i < products.size(); i++) {
@@ -170,8 +183,10 @@ public class GUI {
                     f.repaint();
                 }
             });
-            f.add(productButton);
+            panel.add(productButton);
+
         }
+        f.add(spane);
 
 
         //проверка есть ли покупатель в базе
@@ -181,14 +196,26 @@ public class GUI {
         f.add(customerCodeField);
 
         JButton checkCustomerButton = new JButton("Check");
-        checkCustomerButton.setBounds(600, 470, 120, 20);
+        checkCustomerButton.setBounds(590, 470, 140, 20);
         checkCustomerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if ((CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
-                    checkCustomerButton.setText(CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText())).getName());
+                String strCustomerCode = customerCodeField.getText();
+
+                try {
+                    int code = Integer.parseInt(strCustomerCode);
+                    Customer customer = CustomersList.findCustomer(code);
+                    if (customer != null) {
+                        checkCustomerButton.setText(customer.getName());
+                    }
+                    else {
+                        checkCustomerButton.setText("ei ole");
+                    }
+                } catch (NumberFormatException e) {
+                    checkCustomerButton.setText("Sisesta number");
+                } catch (Exception e) {
+                    checkCustomerButton.setText("Viga");
                 }
-                else checkCustomerButton.setText("ei ole");
             }
         });
         f.add(checkCustomerButton);
@@ -201,16 +228,34 @@ public class GUI {
         makeOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if ((CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText()))) != null) {
-                    Customer thisCustomer = Objects.requireNonNull(CustomersList.findCustomer(Integer.parseInt(customerCodeField.getText())));
-                    Order thisOrder = new OrderWithCustomer(thisCustomer, WorkersList.workers.get(0), new Date(), orderProducts);
-                    OrdersList.addOrder(thisOrder);
-                    thisCustomer.addPurchasesSum(thisOrder.getTotalSum());
+                String strCustomerCode = customerCodeField.getText();
+                Integer code = null;
+
+                try {
+                    code = Integer.parseInt(strCustomerCode);
+                } catch (NumberFormatException e) {
+                    System.out.println("Ei ole int");
+                }
+
+                if (code != null) {
+                    Customer customer = CustomersList.findCustomer(code);
+                    if (customer != null) {
+                        Order thisOrder = new OrderWithCustomer(customer, WorkersList.workers.get(0), new Date(), orderProducts);
+                        OrdersList.addOrder(thisOrder);
+                        OrdersList.saveToFile();
+                        customer.addPurchasesSum(thisOrder.getTotalSum());
+
+                    } else {
+                        OrdersList.addOrder(new Order(WorkersList.workers.get(0), new Date(), orderProducts));
+                        OrdersList.saveToFile();
+                    }
                 }
                 else {
                     OrdersList.addOrder(new Order(WorkersList.workers.get(0), new Date(), orderProducts));
                     OrdersList.saveToFile();
                 }
+
+
 
                 //закрываем текущее окно
                 //Suletame jooksevat akent.
@@ -220,9 +265,13 @@ public class GUI {
         });
         f.add(makeOrderButton);
 
+
+
         //Make Order akna mõõtmed.
         f.setSize(800,600);
         f.setLayout(null);
+        f.setResizable(false);
+        f.setLocationRelativeTo(null);
         f.setVisible(true);
     }
 
