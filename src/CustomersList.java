@@ -8,7 +8,7 @@ import java.util.Date;
 public class CustomersList {
     public static ArrayList<Customer> customers = new ArrayList<>();
 
-    public static void addCustumer(Customer customer) {
+    public static void addCustomer(Customer customer) {
         customers.add(customer);
     }
 
