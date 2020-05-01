@@ -1,6 +1,8 @@
-# Objektorienteeritud programeerimisee rühmatööd
+# Objektorienteeritud programeerimisee projekti rühmatöö
 
-[WIKI](https://github.com/aparm/oop-group-work/wiki)
+Iga rühmatööde kirjeldust saab leida projekti wikipeedias.
+
+#[WIKI](https://github.com/aparm/oop-group-work/wiki)
 
 ## Autorid:
 Aleksei Parm, Aleksander Daniel Veske
