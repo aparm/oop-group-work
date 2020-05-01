@@ -1,5 +1,7 @@
 # Objektorienteeritud programeerimisee rühmatööd
 
+[WIKI](https://github.com/aparm/oop-group-work/wiki)
+
 ## Autorid:
 Aleksei Parm, Aleksander Daniel Veske
 
