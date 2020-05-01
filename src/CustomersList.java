@@ -19,7 +19,7 @@ public class CustomersList {
         }
         return null;
     }
-
+    //Salvsestame listi faili
     //сохраняет лист в файл
     public static void saveToFile() {
         try {
@@ -39,7 +39,7 @@ public class CustomersList {
             e.printStackTrace();
         }
     }
-
+    //Laadimee listi failist
     //загружает лист из файла
     public static void loadFromFile() {
         try {

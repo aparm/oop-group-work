@@ -1,6 +1,9 @@
 import Worker.*;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,7 +17,7 @@ public class OrdersList {
         orders.add(order);
     }
 
-
+    //Salvestame listi faili
     //сохраняет лист в файл
     public static void saveToFile() {
         try {
@@ -24,8 +27,18 @@ public class OrdersList {
 
             for (Order order : orders) {
                 dos.writeUTF(order.getWorker().getName());
-                dos.writeUTF(order.getDate().toString());
+
+                DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                String date = df.format(order.getDate());
+                dos.writeUTF(date);
+
                 dos.writeDouble(order.getTotalSum());
+
+                if (order instanceof OrderWithCustomer) {
+                    dos.writeBoolean(true);
+                    dos.writeInt(((OrderWithCustomer) order).getCustomer().getCode());
+                }
+                else dos.writeBoolean(false);
             }
 
         } catch (IOException e) {
@@ -33,7 +46,7 @@ public class OrdersList {
         }
 
     }
-
+    //Laadimee listi failist
     //загружает лист из файла
     public static void loadFromFile() {
 
@@ -44,21 +57,60 @@ public class OrdersList {
                 String workerName = dos.readUTF();
                 String dateStr = dos.readUTF();
                 double totalSum = dos.readDouble();
+                boolean onOrderWithCustomer = dos.readBoolean();
+                Integer customerCode = null;
+                if (onOrderWithCustomer) {
+                    customerCode = dos.readInt();
+                }
+
+                Date date;
+                try {
+                    date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse(dateStr);
+                } catch (ParseException e) {
+                    date = new Date();
+                    e.printStackTrace();
+                }
 
                 if (WorkersList.findWorker(workerName) != null) {
                     Worker worker = WorkersList.findWorker(workerName);
-                    //Date date = Date.parse(dateStr);
-                    //TODO: Date.parse https://www.javatpoint.com/java-string-to-date
-                    Order order = new Order(worker, new Date(), new ArrayList<>());
-                    order.setTotalSum(totalSum);
-                    orders.add(order);
+
+                    if (onOrderWithCustomer) {
+                        Customer customer = CustomersList.findCustomer(customerCode);
+                        if (customer != null) {
+                            OrderWithCustomer orderWithCustomer = new OrderWithCustomer(customer, worker, date, new ArrayList<>());
+                            orderWithCustomer.setTotalSum(totalSum);
+                            orders.add(orderWithCustomer);
+                        }
+                        else {
+                            Order order = new Order(worker, date, new ArrayList<>());
+                            order.setTotalSum(totalSum);
+                            orders.add(order);
+                        }
+                    }
+                    else {
+                        Order order = new Order(worker, date, new ArrayList<>());
+                        order.setTotalSum(totalSum);
+                        orders.add(order);
+                    }
+
                 }
                 else {
                     Worker worker = new Worker(workerName, "");
                     WorkersList.addWorker(worker);
-                    Order order = new Order(worker, new Date(), new ArrayList<>());
-                    order.setTotalSum(totalSum);
-                    orders.add(order);
+
+                    if (onOrderWithCustomer) {
+                        Customer customer = CustomersList.findCustomer(customerCode);
+                        if (customer != null) {
+                            OrderWithCustomer orderWithCustomer = new OrderWithCustomer(customer, worker, date, new ArrayList<>());
+                            orderWithCustomer.setTotalSum(totalSum);
+                            orders.add(orderWithCustomer);
+                        }
+                        else {
+                            Order order = new Order(worker, date, new ArrayList<>());
+                            order.setTotalSum(totalSum);
+                            orders.add(order);
+                        }
+                    }
                 }
 
             }

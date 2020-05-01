@@ -19,7 +19,7 @@ public class WorkersList {
     }
 
     //TODO: сохранение и загрузка работников из других классов (записывать и считывать еще одну String и обработать как нужно)
-
+    //Salvestame listi failist
     //сохраняет лист в файл
     public static void saveToFile() {
         try {
@@ -36,7 +36,7 @@ public class WorkersList {
             e.printStackTrace();
         }
     }
-
+    //Laadime listi failist
     //загружает лист из файла
     public static void loadFromFile() {
         try {

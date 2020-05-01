@@ -11,7 +11,7 @@ public class ProductsList {
         products.add(product);
     }
 
-
+    //Salveestame listi faili
     //сохраняет лист в файл
     public static void saveToFile() {
         try {
@@ -29,7 +29,7 @@ public class ProductsList {
             e.printStackTrace();
         }
     }
-
+    //Laadimee listi failist
     //загружает лист из файла
     public static void loadFromFile() {
         try {
