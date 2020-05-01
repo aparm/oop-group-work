@@ -2,7 +2,7 @@
 
 Iga rühmatööde kirjeldust saab leida projekti wikipeedias.
 
-#[WIKI](https://github.com/aparm/oop-group-work/wiki)
+[WIKI](https://github.com/aparm/oop-group-work/wiki)
 
 ## Autorid:
 Aleksei Parm, Aleksander Daniel Veske
